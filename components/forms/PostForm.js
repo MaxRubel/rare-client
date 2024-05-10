@@ -1,6 +1,9 @@
+/* eslint-disable react/require-default-props */
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Form } from 'react-bootstrap/lib/Navbar';
+import PropTypes from 'prop-types';
+import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { createPost, updatePost } from '../../api/postData';
 
 const initialState = {
@@ -11,10 +14,8 @@ const initialState = {
 
 function PostForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  // const [categories, setCategories] = useState([])
   const router = useRouter();
-
-  // use effects for categories
+  const userId = localStorage.getItem('auth_token');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,7 +30,7 @@ function PostForm({ obj }) {
     if (obj.id) {
       updatePost(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, user: user.id };
+      const payload = { ...formInput, user: userId };
       createPost(payload).then(() => router.push('/'));
     }
   };
