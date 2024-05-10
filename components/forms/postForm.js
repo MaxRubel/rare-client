@@ -1,8 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Button, FloatingLabel, Form } from 'react-bootstrap';
+import Form from 'react-bootstrap/Form';
+import PropTypes from 'prop-types';
+import { Button, FloatingLabel } from 'react-bootstrap';
 import { createPost, updatePost } from '../../api/postData';
-import { useAuth } from '../../utils/data/AuthContext';
 
 const initialState = {
   title: '',
@@ -10,11 +12,12 @@ const initialState = {
   content: '',
 };
 
-function PostForm({ obj }) {
+function PostForm({ obj, user }) {
   const [formInput, setFormInput] = useState(initialState);
+  // const [categories, setCategories] = useState([])
   const router = useRouter();
-  const { user } = useAuth();
-  console.log(user);
+
+  // use effects for categories
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +43,14 @@ function PostForm({ obj }) {
         <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Add a'} Post</h2>
 
         <FloatingLabel controlId="floatingInput1" label="Post Title" className="mb-3">
-          <Form.Control type="text" placeholder="Title" name="title" value={formInput.title} onChange={handleChange} required />
+          <Form.Control
+            type="text"
+            placeholder="Title"
+            name="title"
+            value={formInput.title}
+            onChange={handleChange}
+            required
+          />
         </FloatingLabel>
 
         <FloatingLabel controlId="floatingInput2" label="Post Image" className="mb-3">
@@ -65,6 +75,11 @@ PostForm.propTypes = {
     image_url: PropTypes.string,
     content: PropTypes.string,
   }),
+
+};
+
+PostForm.defaultProps = {
+  obj: initialState,
 };
 
 export default PostForm;
