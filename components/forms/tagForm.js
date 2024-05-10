@@ -1,13 +1,10 @@
 import { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
-import { createNewCategory } from '../../api/categories';
-import { useAuth } from '../../utils/data/AuthContext';
+import { createNewTag } from '../../api/tags';
 
-export default function CategoryForm({ onUpdate }) {
+export default function TagForm({ onUpdate }) {
   const [label, setLabel] = useState('');
-  const { user } = useAuth();
-  console.log(user);
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -16,7 +13,7 @@ export default function CategoryForm({ onUpdate }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    createNewCategory({ label }).then(() => {
+    createNewTag({ label }).then(() => {
       onUpdate();
     });
   };
@@ -32,6 +29,6 @@ export default function CategoryForm({ onUpdate }) {
   );
 }
 
-CategoryForm.propTypes = {
+TagForm.propTypes = {
   onUpdate: PropTypes.func.isRequired,
 };

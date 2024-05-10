@@ -1,7 +1,7 @@
 const endpoint = 'http://localhost:8088';
 
-export const getAllCategories = () => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/categories`, {
+export const getAllTags = () => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/tags`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -18,8 +18,8 @@ export const getAllCategories = () => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export const createNewCategory = (payload) => new Promise((resolve, reject) => {
-  fetch(`${endpoint}/categories`, {
+export const createNewTag = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/tags`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

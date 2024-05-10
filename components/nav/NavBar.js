@@ -16,6 +16,9 @@ function AppNavBar({ token, setToken }) {
   const catManager = () => {
     router.push('/categoryManager');
   };
+  const tagManager = () => {
+    router.push('/tagManager');
+  };
 
   return (
     <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
@@ -35,7 +38,7 @@ function AppNavBar({ token, setToken }) {
                 <Button className="nav-button" onClick={catManager}>
                   Category Manager
                 </Button>
-                <Button className="nav-button">Tag Manager</Button>
+                <Button className="nav-button" onClick={tagManager}>Tag Manager</Button>
               </div>
             ) : (
               ''

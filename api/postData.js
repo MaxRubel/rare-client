@@ -1,5 +1,5 @@
 const getAllPosts = () => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/posts`, {
+  fetch('http://localhost:8088/posts', {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ const getSinglePost = (id) => new Promise((resolve, reject) => {
 });
 
 const createPost = (payload) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/posts`, {
+  fetch('http://localhost:8088/posts', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ const deletePost = (id) => new Promise((resolve, reject) => {
 });
 
 const updatePost = (payload) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/posts`, {
+  fetch('http://localhost:8088/posts', {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',

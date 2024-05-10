@@ -13,7 +13,6 @@ module.exports = {
   },
   plugins: ['react', 'prettier'],
   rules: {
-    "object-curly-newline": 'warn',
     'no-unused-vars': 'error',
     'react/jsx-props-no-spreading': 'off',
     'react/react-in-jsx-scope': 'off',
