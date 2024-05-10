@@ -14,10 +14,7 @@ const initialState = {
 
 function PostForm({ obj, user }) {
   const [formInput, setFormInput] = useState(initialState);
-  // const [categories, setCategories] = useState([])
   const router = useRouter();
-
-  // use effects for categories
 
   const handleChange = (e) => {
     const { name, value } = e.target;

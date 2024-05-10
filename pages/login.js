@@ -3,15 +3,12 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
 import { loginUser } from '../utils/data/AuthManager';
-import getUserByUsername from '../api/users';
-import { useAuth } from '../utils/data/AuthContext';
 
 function Login({ setToken }) {
   const username = useRef();
   const password = useRef();
   const navigate = useRouter();
   const [isUnsuccessful, setisUnsuccessful] = useState(false);
-  const { changeUser } = useAuth();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -24,9 +21,6 @@ function Login({ setToken }) {
     loginUser(user).then((res) => {
       if ('valid' in res && res.valid) {
         setToken(res.token);
-        getUserByUsername(user.username).then((data) => {
-          changeUser(data);
-        });
         navigate.push('/');
       } else {
         setisUnsuccessful(true);

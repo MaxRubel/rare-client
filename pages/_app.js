@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/router';
@@ -6,12 +7,10 @@ import NavBar from '../components/nav/NavBar';
 import '../styles/globals.css';
 import '../styles/navbar.css';
 import '../styles/categoryManager.css';
-import { AuthProvider } from '../utils/data/AuthContext';
 
 function MyApp({ Component, pageProps }) {
   const [token, setTokenState] = useState(null);
   const router = useRouter();
-
   useEffect(() => {
     setTokenState(localStorage.getItem('auth_token', '') || '');
   }, []);
@@ -37,10 +36,8 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <>
-      <AuthProvider>
-        <NavBar token={token} setToken={setToken} />
-        <Component {...newPageProps} />
-      </AuthProvider>
+      <NavBar token={token} setToken={setToken} />
+      <Component {...newPageProps} />
     </>
   );
 }

@@ -10,10 +10,8 @@ import {
 }
   from 'react-bootstrap';
 import Logo from './rare.jpeg';
-import { useAuth } from '../../utils/data/AuthContext';
 
 function AppNavBar({ token, setToken }) {
-  const { changeUser } = useAuth();
   const router = useRouter();
   const catManager = () => {
     router.push('/categoryManager');
@@ -55,7 +53,6 @@ function AppNavBar({ token, setToken }) {
                   onClick={() => {
                     setToken('');
                     router.push('/login');
-                    changeUser(null);
                   }}
                 >
                   Logout
@@ -79,7 +76,7 @@ function AppNavBar({ token, setToken }) {
 }
 
 AppNavBar.propTypes = {
-  token: PropTypes.string.isRequired,
+  token: PropTypes.number.isRequired,
   setToken: PropTypes.func.isRequired,
 };
 export default AppNavBar;
