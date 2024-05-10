@@ -1,9 +1,6 @@
-/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Form from 'react-bootstrap/Form';
-import PropTypes from 'prop-types';
-import { Button, FloatingLabel } from 'react-bootstrap';
+import { Form } from 'react-bootstrap/lib/Navbar';
 import { createPost, updatePost } from '../../api/postData';
 
 const initialState = {
@@ -12,9 +9,12 @@ const initialState = {
   content: '',
 };
 
-function PostForm({ obj, user }) {
+function PostForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
+  // const [categories, setCategories] = useState([])
   const router = useRouter();
+
+  // use effects for categories
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -51,32 +51,40 @@ function PostForm({ obj, user }) {
         </FloatingLabel>
 
         <FloatingLabel controlId="floatingInput2" label="Post Image" className="mb-3">
-          <Form.Control type="url" placeholder="Enter an image url" name="image_url" value={formInput.image_url} onChange={handleChange} required />
+          <Form.Control
+            type="url"
+            placeholder="Enter an image url"
+            name="image_url"
+            value={formInput.image_url}
+            onChange={handleChange}
+            required
+          />
         </FloatingLabel>
 
         <FloatingLabel controlId="floatingInput1" label="Post Content" className="mb-3">
-          <Form.Control type="text" placeholder="Content" name="content" value={formInput.content} onChange={handleChange} required />
+          <Form.Control
+            type="text"
+            placeholder="Content"
+            name="content"
+            value={formInput.content}
+            onChange={handleChange}
+            required
+          />
         </FloatingLabel>
 
-        <Button variant="btn-small btn-secondary" type="submit">
-          {obj.id ? 'Update' : 'Create'} Post
-        </Button>
+        <Button variant="btn-small btn-secondary" type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
+
       </Form>
     </>
   );
 }
 
 PostForm.propTypes = {
-  obj: PropTypes.shape({
+  pbj: PropTypes.shape({
     title: PropTypes.string,
     image_url: PropTypes.string,
     content: PropTypes.string,
   }),
-
-};
-
-PostForm.defaultProps = {
-  obj: initialState,
 };
 
 export default PostForm;

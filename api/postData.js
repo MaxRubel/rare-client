@@ -1,3 +1,5 @@
+const endpoint = 'http://localhost:8088';
+
 const getAllPosts = () => new Promise((resolve, reject) => {
   fetch('http://localhost:8088/posts', {
     method: 'GET',
@@ -11,7 +13,7 @@ const getAllPosts = () => new Promise((resolve, reject) => {
 });
 
 const getSinglePost = (id) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/posts/${id}`, {
+  fetch(`${endpoint}/posts/${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
@@ -23,7 +25,7 @@ const getSinglePost = (id) => new Promise((resolve, reject) => {
 });
 
 const createPost = (payload) => new Promise((resolve, reject) => {
-  fetch('http://localhost:8088/posts', {
+  fetch(`${endpoint}/posts`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -36,7 +38,7 @@ const createPost = (payload) => new Promise((resolve, reject) => {
 });
 
 const deletePost = (id) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/posts/${id}`, {
+  fetch(`${endpoint}/posts/${id}`, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json',
@@ -48,7 +50,7 @@ const deletePost = (id) => new Promise((resolve, reject) => {
 });
 
 const updatePost = (payload) => new Promise((resolve, reject) => {
-  fetch('http://localhost:8088/posts', {
+  fetch(`${endpoint}/posts`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -61,7 +63,7 @@ const updatePost = (payload) => new Promise((resolve, reject) => {
 });
 
 const getPostByUserId = (id) => new Promise((resolve, reject) => {
-  fetch(`http://localhost:8088/posts?user_id=${id}`, {
+  fetch(`${endpoint}/posts?user_id=${id}`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
