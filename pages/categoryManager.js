@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { getAllCategories } from '../api/categories';
 import CategoryCard from '../components/CategoryCard';
-import CategoryForm from '../components/forms/categoryForm';
+import CategoryForm from '../components/forms/CategoryForm';
 
 export default function CategoryManager() {
   const [cats, setCats] = useState([]);

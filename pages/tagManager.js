@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getAllTags } from '../api/tags';
-import TagForm from '../components/forms/tagForm';
+import TagForm from '../components/forms/TagForm';
 import TagCard from '../components/TagCard';
 
 export default function TagManager() {

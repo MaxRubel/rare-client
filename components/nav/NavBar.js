@@ -10,8 +10,10 @@ import {
 }
   from 'react-bootstrap';
 import Logo from './rare.jpeg';
+import { useAuth } from '../../utils/data/AuthContext';
 
 function AppNavBar({ token, setToken }) {
+  const { changeUser } = useAuth();
   const router = useRouter();
   const catManager = () => {
     router.push('/categoryManager');
@@ -53,6 +55,7 @@ function AppNavBar({ token, setToken }) {
                   onClick={() => {
                     setToken('');
                     router.push('/login');
+                    changeUser(null);
                   }}
                 >
                   Logout

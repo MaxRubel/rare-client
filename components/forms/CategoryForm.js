@@ -2,11 +2,9 @@ import { useState } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { createNewCategory } from '../../api/categories';
-// import { useAuth } from '../../utils/data/AuthContext';
 
 export default function CategoryForm({ onUpdate }) {
   const [label, setLabel] = useState('');
-  // const { user } = useAuth();
 
   const handleChange = (e) => {
     const { value } = e.target;
