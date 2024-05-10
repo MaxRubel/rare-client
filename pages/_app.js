@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import NavBar from '../components/nav/NavBar';
 import '../styles/globals.css';
+import '../styles/navbar.css';
+import '../styles/categoryManager.css';
 
 function MyApp({ Component, pageProps }) {
   const [token, setTokenState] = useState(null);

@@ -2,14 +2,21 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import {
+  Button,
+  Container,
+  Nav,
+  Navbar } from 'react-bootstrap';
 import Logo from './rare.jpeg';
 
 function AppNavBar({ token, setToken }) {
-  const navigate = useRouter();
+  const router = useRouter();
+  const catManager = () => {
+    router.push('/categoryManager');
+  };
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
       <Container>
         <Link passHref href="/">
           <Navbar.Brand>
@@ -20,24 +27,32 @@ function AppNavBar({ token, setToken }) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             {token ? (
-              <Link passHref href="/">
-                <Nav.Link>Posts</Nav.Link>
-              </Link>
+              <div className="btn-nav-row">
+                <Button className="nav-button">All Posts</Button>
+                <Button className="nav-button">My Posts</Button>
+                <Button className="nav-button" onClick={catManager}>
+                  Category Manager
+                </Button>
+                <Button className="nav-button">Tag Manager</Button>
+              </div>
             ) : (
               ''
             )}
 
             {token ? (
-              <button
-                type="button"
-                className="button is-outlined"
-                onClick={() => {
-                  setToken('');
-                  navigate('/login');
-                }}
-              >
-                Logout
-              </button>
+              <div className="btn-nav-row">
+                <Button
+                  type="button"
+                  className="nav-button"
+                  style={{ marginLeft: '10px' }}
+                  onClick={() => {
+                    setToken('');
+                    router.push('/login');
+                  }}
+                >
+                  Logout
+                </Button>
+              </div>
             ) : (
               <>
                 <Link passHref href="/register">
