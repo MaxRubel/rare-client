@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router'
-import { getSinglePost } from "../../../api/postData";
-import PostForm from "../../../components/forms/postForm";
+import { getSinglePost } from '../../../api/postData';
+import PostForm from '../../../components/forms/postForm';
 
 export default function EditPost() {
   const [editItem, setEditItem] = useState({})

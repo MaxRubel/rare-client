@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Form } from "react-bootstrap/lib/Navbar";
-import { createPost, updatePost } from "../../api/postData";
+import { Form } from 'react-bootstrap/lib/Navbar';
+import { createPost, updatePost } from '../../api/postData';
 
 const initialState = {
   title: '',
