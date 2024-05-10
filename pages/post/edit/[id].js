@@ -4,8 +4,8 @@ import { getSinglePost } from '../../../api/postData';
 import PostForm from '../../../components/forms/postForm';
 
 export default function EditPost() {
-  const [editItem, setEditItem] = useState({})
-  const router = useRouter()
+  const [editItem, setEditItem] = useState({});
+  const router = useRouter();
 
   const { id } = router.query;
 
