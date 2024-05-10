@@ -1,6 +1,9 @@
+/* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import { Form } from 'react-bootstrap/lib/Navbar';
+import Form from 'react-bootstrap/Form';
+import PropTypes from 'prop-types';
+import { Button, FloatingLabel } from 'react-bootstrap';
 import { createPost, updatePost } from '../../api/postData';
 
 const initialState = {
@@ -9,10 +12,10 @@ const initialState = {
   content: '',
 };
 
-function PostForm({ obj }) {
-  const [formInput, setFormInput] = useState(initialState)
+function PostForm({ obj, user }) {
+  const [formInput, setFormInput] = useState(initialState);
   // const [categories, setCategories] = useState([])
-  const router = useRouter()
+  const router = useRouter();
 
   // use effects for categories
 
@@ -29,7 +32,7 @@ function PostForm({ obj }) {
     if (obj.id) {
       updatePost(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, user: user.id};
+      const payload = { ...formInput, user: user.id };
       createPost(payload).then(() => router.push('/'));
     }
   };
@@ -40,13 +43,13 @@ function PostForm({ obj }) {
         <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Add a'} Post</h2>
 
         <FloatingLabel controlId="floatingInput1" label="Post Title" className="mb-3">
-        <Form.Control
-          type="text"
-          placeholder="Title"
-          name="title"
-          value={formInput.title}
-          onChange={handleChange}
-          required
+          <Form.Control
+            type="text"
+            placeholder="Title"
+            name="title"
+            value={formInput.title}
+            onChange={handleChange}
+            required
           />
         </FloatingLabel>
 
@@ -80,11 +83,16 @@ function PostForm({ obj }) {
 }
 
 PostForm.propTypes = {
-  pbj: PropTypes.shape({
+  obj: PropTypes.shape({
     title: PropTypes.string,
     image_url: PropTypes.string,
     content: PropTypes.string,
   }),
+
 };
 
-export default PostForm
+PostForm.defaultProps = {
+  obj: initialState,
+};
+
+export default PostForm;
