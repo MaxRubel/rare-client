@@ -6,7 +6,9 @@ import {
   Button,
   Container,
   Nav,
-  Navbar } from 'react-bootstrap';
+  Navbar,
+}
+  from 'react-bootstrap';
 import Logo from './rare.jpeg';
 
 function AppNavBar({ token, setToken }) {
