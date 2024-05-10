@@ -1,5 +1,5 @@
 function Home() {
-  return 'Loading...';
+  return 'wow';
 }
 
 export default Home;
