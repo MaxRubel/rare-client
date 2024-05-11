@@ -1,6 +1,5 @@
-/* eslint-disable import/extensions */
 import React from 'react';
-import PostForm from '../../components/forms/PostForm';
+import PostForm from '../../components/forms/postForm';
 
 export default function AddPost() {
   return <PostForm />;
