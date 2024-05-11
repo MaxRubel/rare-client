@@ -27,10 +27,10 @@ function PostForm({ obj }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (obj.id) {
+    if (obj?.id) {
       updatePost(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, user: userId };
+      const payload = { ...formInput, user_id: userId };
       createPost(payload).then(() => router.push('/'));
     }
   };
@@ -38,7 +38,7 @@ function PostForm({ obj }) {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <h2 className="text-white mt-5">{obj.id ? 'Update' : 'Add a'} Post</h2>
+        <h2 className="text-white mt-5">{obj?.id ? 'Update' : 'Add a'} Post</h2>
 
         <FloatingLabel controlId="floatingInput1" label="Post Title" className="mb-3">
           <Form.Control
@@ -73,7 +73,7 @@ function PostForm({ obj }) {
           />
         </FloatingLabel>
 
-        <Button variant="btn-small btn-secondary" type="submit">{obj.id ? 'Update' : 'Create'} Post</Button>
+        <Button variant="btn-small btn-secondary" type="submit">{obj?.id ? 'Update' : 'Create'} Post</Button>
 
       </Form>
     </>

@@ -20,6 +20,15 @@ function AppNavBar({ token, setToken }) {
   const tagManager = () => {
     router.push('/tagManager');
   };
+  const allPosts = () => {
+    router.push('/');
+  };
+  const userPosts = () => {
+    router.push('/userPosts');
+  };
+  const profilePage = () => {
+    router.push('/profilePage');
+  };
 
   return (
     <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
@@ -35,15 +44,9 @@ function AppNavBar({ token, setToken }) {
           <Nav className="me-auto">
             {token ? (
               <div className="btn-nav-row">
-                <Link passHref href="/">
-                  <Button className="nav-button">All Posts</Button>
-                </Link>
-                <Link passHref href="/userPosts">
-                  <Button className="nav-button"> My Posts </Button>
-                </Link>
-                <Link passHref href="/profilePage">
-                  <Button className="nav-button">My Profile</Button>
-                </Link>
+                <Button className="nav-button" onClick={allPosts}>All Posts</Button>
+                <Button className="nav-button" onClick={userPosts}> My Posts </Button>
+                <Button className="nav-button" onClick={profilePage}>My Profile</Button>
                 <Button className="nav-button" onClick={catManager}>
                   Category Manager
                 </Button>
