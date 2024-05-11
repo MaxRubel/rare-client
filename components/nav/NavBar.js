@@ -23,6 +23,9 @@ function AppNavBar({ token, setToken }) {
   const myPosts = () => {
     router.push('/userPosts');
   };
+  const myProfile = () => {
+    router.push('profilePage');
+  };
 
   return (
     <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
@@ -39,9 +42,7 @@ function AppNavBar({ token, setToken }) {
               <div className="btn-nav-row">
                 <Button className="nav-button">All Posts</Button>
                 <Button className="nav-button" onClick={myPosts}>My Posts</Button>
-                <Link passHref href="/profilePage">
-                  <Button className="nav-button">My Profile</Button>
-                </Link>
+                <Button className="nav-button" onClick={myProfile}>My Profile</Button>
                 <Button className="nav-button" onClick={catManager}>
                   Category Manager
                 </Button>
