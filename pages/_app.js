@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useRouter } from 'next/router';
@@ -10,7 +11,6 @@ import '../styles/categoryManager.css';
 function MyApp({ Component, pageProps }) {
   const [token, setTokenState] = useState(null);
   const router = useRouter();
-
   useEffect(() => {
     setTokenState(localStorage.getItem('auth_token', '') || '');
   }, []);

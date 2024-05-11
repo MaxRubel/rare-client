@@ -1,9 +1,9 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/prop-types */
 import { useState } from 'react';
 import { useRouter } from 'next/router';
-import Form from 'react-bootstrap/Form';
 import PropTypes from 'prop-types';
-import { Button, FloatingLabel } from 'react-bootstrap';
+import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { createPost, updatePost } from '../../api/postData';
 
 const initialState = {
@@ -12,12 +12,10 @@ const initialState = {
   content: '',
 };
 
-function PostForm({ obj, user }) {
+function PostForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
-  // const [categories, setCategories] = useState([])
   const router = useRouter();
-
-  // use effects for categories
+  const userId = localStorage.getItem('auth_token');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,7 +30,7 @@ function PostForm({ obj, user }) {
     if (obj.id) {
       updatePost(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, user: user.id };
+      const payload = { ...formInput, user: userId };
       createPost(payload).then(() => router.push('/'));
     }
   };
@@ -83,16 +81,11 @@ function PostForm({ obj, user }) {
 }
 
 PostForm.propTypes = {
-  obj: PropTypes.shape({
+  pbj: PropTypes.shape({
     title: PropTypes.string,
     image_url: PropTypes.string,
     content: PropTypes.string,
   }),
-
-};
-
-PostForm.defaultProps = {
-  obj: initialState,
 };
 
 export default PostForm;
