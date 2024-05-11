@@ -8,11 +8,13 @@ function Profile() {
   useEffect(() => {
     const userId = localStorage.getItem('auth_token');
     getSingleUser(userId).then((taco) => {
-      setUser(taco);
+      setUser({ ...taco, id: String(taco.id) });
     });
   }, []);
   return (
-    <ProfileCard userObj={user} />
+    <div>
+      <ProfileCard userObj={user} />
+    </div>
   );
 }
 

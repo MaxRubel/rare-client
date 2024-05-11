@@ -35,6 +35,9 @@ function AppNavBar({ token, setToken }) {
               <div className="btn-nav-row">
                 <Button className="nav-button">All Posts</Button>
                 <Button className="nav-button">My Posts</Button>
+                <Link passHref href="/profilePage">
+                  <Button className="nav-button">My Profile</Button>
+                </Link>
                 <Button className="nav-button" onClick={catManager}>
                   Category Manager
                 </Button>
