@@ -40,9 +40,15 @@ function AppNavBar({ token, setToken }) {
           <Nav className="me-auto">
             {token ? (
               <div className="btn-nav-row">
-                <Button className="nav-button">All Posts</Button>
-                <Button className="nav-button" onClick={myPosts}>My Posts</Button>
-                <Button className="nav-button" onClick={myProfile}>My Profile</Button>
+                <Link passHref href="/">
+                  <Button className="nav-button">All Posts</Button>
+                </Link>
+                <Link passHref href="/userPosts">
+                  <Button className="nav-button"> My Posts </Button>
+                </Link>
+                <Link passHref href="/profilePage">
+                  <Button className="nav-button">My Profile</Button>
+                </Link>
                 <Button className="nav-button" onClick={catManager}>
                   Category Manager
                 </Button>
