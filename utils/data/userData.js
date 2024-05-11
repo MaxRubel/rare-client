@@ -30,7 +30,45 @@ const getSingleUser = (id) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
+const createUser = (userData) => new Promise((resolve, reject) => {
+  fetch(`${userEndpoint}`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Failed to create user');
+      }
+      return response.json();
+    })
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+const updateUser = (userId, updatedUserData) => new Promise((resolve, reject) => {
+  fetch(`${userEndpoint}/${userId}`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(updatedUserData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error('Failed to update user');
+      }
+      return response.json();
+    })
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
 export {
   getUsers,
   getSingleUser,
+  createUser,
+  updateUser,
 };
