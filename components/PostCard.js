@@ -37,10 +37,10 @@ function PostCard({ postObj, onUpdate }) {
 PostCard.propTypes = {
   postObj: PropTypes.shape({
     title: PropTypes.string,
-    publication_date: PropTypes.string,
+    publication_date: PropTypes.number,
     image_url: PropTypes.string,
-    user_id: PropTypes.string,
-    id: PropTypes.string,
+    user_id: PropTypes.number,
+    id: PropTypes.number,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
