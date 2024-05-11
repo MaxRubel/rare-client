@@ -16,17 +16,19 @@ export default function TagManager() {
   };
 
   return (
-    <div className="centered">
-      <div className="page-grid-2-cat">
-        <div>
-          {tags.map((tag) => (
-            <TagCard tag={tag} key={tag.id} />
-          ))}
-        </div>
-        <div>
-          <TagForm onUpdate={onUpdate} />
+    <>
+      <div className="centered">
+        <div className="page-grid-2-cat">
+          <div>
+            {tags.map((tag) => (
+              <TagCard tag={tag} key={tag.id} />
+            ))}
+          </div>
+          <div>
+            <TagForm onUpdate={onUpdate} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

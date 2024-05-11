@@ -7,6 +7,7 @@ import NavBar from '../components/nav/NavBar';
 import '../styles/globals.css';
 import '../styles/navbar.css';
 import '../styles/categoryManager.css';
+import '../styles/commentsSection.css';
 
 function MyApp({ Component, pageProps }) {
   const [token, setTokenState] = useState(null);
