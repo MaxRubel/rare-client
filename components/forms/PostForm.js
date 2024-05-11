@@ -1,10 +1,12 @@
 /* eslint-disable react/require-default-props */
 /* eslint-disable react/prop-types */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { Button, FloatingLabel, Form } from 'react-bootstrap';
 import { createPost, updatePost } from '../../api/postData';
+import { getAllCategories } from '../../api/categories';
+import getDate from '../postDate';
 
 const initialState = {
   title: '',
@@ -14,8 +16,18 @@ const initialState = {
 
 function PostForm({ obj }) {
   const [formInput, setFormInput] = useState(initialState);
+  const [categories, setCategories] = useState([]);
+
   const router = useRouter();
   const userId = localStorage.getItem('auth_token');
+
+  useEffect(() => {
+    if (obj?.id) setFormInput({ ...obj, category: obj.category_id });
+  }, [obj]);
+
+  useEffect(() => {
+    getAllCategories().then(setCategories);
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,7 +42,7 @@ function PostForm({ obj }) {
     if (obj?.id) {
       updatePost(formInput).then(() => router.push('/'));
     } else {
-      const payload = { ...formInput, user_id: userId };
+      const payload = { ...formInput, user_id: userId, publication_date: getDate() };
       createPost(payload).then(() => router.push('/'));
     }
   };
@@ -60,6 +72,28 @@ function PostForm({ obj }) {
             onChange={handleChange}
             required
           />
+        </FloatingLabel>
+
+        <FloatingLabel controlId="floatingSelect" label="Category">
+          <Form.Select
+            aria-label="Category"
+            name="category_id"
+            onChange={handleChange}
+            className="mb-3"
+            value={formInput.category_id}
+          >
+            <option value="">Select applicable category</option>
+            {
+            categories.map((category) => (
+              <option
+                key={category.id}
+                value={category.id}
+              >
+                {category.label}
+              </option>
+            ))
+          }
+          </Form.Select>
         </FloatingLabel>
 
         <FloatingLabel controlId="floatingInput1" label="Post Content" className="mb-3">

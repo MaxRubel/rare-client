@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
@@ -17,8 +18,14 @@ function PostCard({ postObj, onUpdate }) {
       <Card.Title>{postObj.title} Publication Date: {postObj.publication_date}</Card.Title>
       <Card.Img src={postObj.image_url} alt={postObj.title} style={{ minHeight: '300px ' }} />
       <Card.Body>
-        { userId === postObj.user_id ? (
+        { userId == postObj.user_id ? (
           <>
+            <Link href={`/post/edit/${postObj.id}`} passHref>
+              <Button variant="light">EDIT</Button>
+            </Link>
+            <Link href={`/post/${postObj.id}`} passHref>
+              <Button variant="light" className="m-2">VIEW</Button>
+            </Link>
             <Button variant="secondary" onClick={deleteThisPost} className="m-2 btn-block">
               DELETE
             </Button>
