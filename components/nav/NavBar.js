@@ -13,11 +13,15 @@ import Logo from './rare.jpeg';
 
 function AppNavBar({ token, setToken }) {
   const router = useRouter();
+
   const catManager = () => {
     router.push('/categoryManager');
   };
   const tagManager = () => {
     router.push('/tagManager');
+  };
+  const myPosts = () => {
+    router.push('/userPosts');
   };
 
   return (
@@ -34,7 +38,7 @@ function AppNavBar({ token, setToken }) {
             {token ? (
               <div className="btn-nav-row">
                 <Button className="nav-button">All Posts</Button>
-                <Button className="nav-button">My Posts</Button>
+                <Button className="nav-button" onClick={myPosts}>My Posts</Button>
                 <Button className="nav-button" onClick={catManager}>
                   Category Manager
                 </Button>

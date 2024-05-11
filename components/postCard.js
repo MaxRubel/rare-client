@@ -17,7 +17,7 @@ function PostCard({ postObj, onUpdate }) {
       <Card.Title>{postObj.title} Publication Date: {postObj.publication_date}</Card.Title>
       <Card.Img src={postObj.image_url} alt={postObj.title} style={{ minHeight: '300px ' }} />
       <Card.Body>
-        { userId === postObj.userId ? (
+        { userId === postObj.user_id ? (
           <>
             <Button variant="secondary" onClick={deleteThisPost} className="m-2 btn-block">
               DELETE
@@ -37,10 +37,10 @@ function PostCard({ postObj, onUpdate }) {
 PostCard.propTypes = {
   postObj: PropTypes.shape({
     title: PropTypes.string,
-    publication_date: PropTypes.string,
+    publication_date: PropTypes.number,
     image_url: PropTypes.string,
-    userId: PropTypes.string,
-    id: PropTypes.string,
+    user_id: PropTypes.number,
+    id: PropTypes.number,
   }).isRequired,
   onUpdate: PropTypes.func.isRequired,
 };
