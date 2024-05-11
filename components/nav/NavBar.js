@@ -20,19 +20,14 @@ function AppNavBar({ token, setToken }) {
   const tagManager = () => {
     router.push('/tagManager');
   };
-  const myPosts = () => {
-    router.push('/userPosts');
-  };
-  const myProfile = () => {
-    router.push('profilePage');
-  };
 
   return (
     <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
       <Container>
+        <Image src={Logo} height="100px" width="100px" alt="Rare Logo" />
         <Link passHref href="/">
           <Navbar.Brand>
-            <Image src={Logo} height="3rem" alt="Rare Logo" /> <h1 className="title is-4">Rare Publishing</h1>
+            <h1 className="title is-4"> Rare Publishing </h1>
           </Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
