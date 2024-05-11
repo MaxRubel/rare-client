@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Button } from 'react-bootstrap';
 import { getAllPosts } from '../api/postData';
-import PostCard from '../components/postCard';
+import PostCard from '../components/PostCard';
 
 function Home() {
   const [posts, setPosts] = useState([]);

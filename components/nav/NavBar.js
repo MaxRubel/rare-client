@@ -13,11 +13,18 @@ import Logo from './rare.jpeg';
 
 function AppNavBar({ token, setToken }) {
   const router = useRouter();
+
   const catManager = () => {
     router.push('/categoryManager');
   };
   const tagManager = () => {
     router.push('/tagManager');
+  };
+  const myPosts = () => {
+    router.push('/userPosts');
+  };
+  const myProfile = () => {
+    router.push('profilePage');
   };
 
   return (

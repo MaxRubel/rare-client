@@ -21,7 +21,7 @@ export default function TagForm({ onUpdate }) {
   return (
     <form onSubmit={handleSubmit}>
       <Card className="create-cat-form">
-        Create a New Category
+        Create a New Tag
         <input className="form-control" name="label" onChange={handleChange} />
         <Button type="submit">Submit</Button>
       </Card>
