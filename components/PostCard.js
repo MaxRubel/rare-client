@@ -1,7 +1,11 @@
+/* eslint-disable import/no-extraneous-dependencies */
 /* eslint-disable eqeqeq */
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
 import { deletePost } from '../api/postData';
 
 function PostCard({ postObj, onUpdate }) {
@@ -21,10 +25,14 @@ function PostCard({ postObj, onUpdate }) {
         { userId == postObj.user_id ? (
           <>
             <Link href={`/post/edit/${postObj.id}`} passHref>
-              <Button variant="light">EDIT</Button>
+              <Button>
+                <FontAwesomeIcon icon={faGear} />
+              </Button>
             </Link>
             <Link href={`/post/${postObj.id}`} passHref>
-              <Button variant="light" className="m-2">VIEW</Button>
+              <Button variant="light" className="m-2">
+                VIEW
+              </Button>
             </Link>
             <Button variant="secondary" onClick={deleteThisPost} className="m-2 btn-block">
               DELETE

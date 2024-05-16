@@ -1,5 +1,3 @@
-/* eslint-disable react/require-default-props */
-/* eslint-disable react/prop-types */
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
@@ -11,6 +9,7 @@ import getDate from '../postDate';
 const initialState = {
   title: '',
   image_url: '',
+  category: {},
   content: '',
 };
 
@@ -22,7 +21,7 @@ function PostForm({ obj }) {
   const userId = localStorage.getItem('auth_token');
 
   useEffect(() => {
-    if (obj?.id) setFormInput({ ...obj, category: obj.category_id });
+    if (obj?.id) setFormInput({ ...obj, category_id: obj.category_id });
   }, [obj]);
 
   useEffect(() => {
@@ -115,11 +114,13 @@ function PostForm({ obj }) {
 }
 
 PostForm.propTypes = {
-  pbj: PropTypes.shape({
+  obj: PropTypes.shape({
     title: PropTypes.string,
     image_url: PropTypes.string,
     content: PropTypes.string,
-  }),
+    category_id: PropTypes.string,
+    id: PropTypes.string,
+  }).isRequired,
 };
 
 export default PostForm;
