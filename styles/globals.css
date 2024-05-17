@@ -30,3 +30,24 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+#edit-btn {
+  background: none;
+  border-color: #74C0FC;
+}
+
+#del-btn {
+  background: none;
+  border-color: #74C0FC;
+}
+
+#view-btn {
+  background: none;
+  border-color: #74C0FC;
+}
+
+#add-btn {
+  background: none;
+  border-color: #74C0FC;
+  color: #74C0FC;
+}
