@@ -5,7 +5,7 @@ import Link from 'next/link';
 import PropTypes from 'prop-types';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faGear } from '@fortawesome/free-solid-svg-icons';
+import { faGear, faTrashCan, faEye } from '@fortawesome/free-solid-svg-icons';
 import { deletePost } from '../api/postData';
 
 function PostCard({ postObj, onUpdate }) {
@@ -25,23 +25,23 @@ function PostCard({ postObj, onUpdate }) {
         { userId == postObj.user_id ? (
           <>
             <Link href={`/post/edit/${postObj.id}`} passHref>
-              <Button>
-                <FontAwesomeIcon icon={faGear} />
+              <Button id="edit-btn">
+                <FontAwesomeIcon icon={faGear} spin style={{ color: '#74C0FC' }} />
               </Button>
             </Link>
             <Link href={`/post/${postObj.id}`} passHref>
-              <Button variant="light" className="m-2">
-                VIEW
+              <Button id="view-btn">
+                <FontAwesomeIcon icon={faEye} style={{ color: '#74C0FC' }} />
               </Button>
             </Link>
-            <Button variant="secondary" onClick={deleteThisPost} className="m-2 btn-block">
-              DELETE
+            <Button id="del-btn" onClick={deleteThisPost}>
+              <FontAwesomeIcon icon={faTrashCan} style={{ color: '#74C0FC' }} />
             </Button>
           </>
         ) : (
-          <Link href={`/post/${postObj.id}`} passHref>
-            <Button variant="light" className="m-2">VIEW</Button>
-          </Link>
+          <Button id="view-btn">
+            <FontAwesomeIcon icon={faEye} style={{ color: '#74C0FC' }} />
+          </Button>
         )}
       </Card.Body>
     </Card>
