@@ -6,7 +6,6 @@ function UserPosts() {
   const [posts, setPosts] = useState([]);
 
   const userId = localStorage.getItem('auth_token');
-  console.log(userId);
 
   const getAllPosts = () => {
     getPostByUserId(userId).then(setPosts);
